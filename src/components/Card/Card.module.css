@@ -1,0 +1,36 @@
+.box {
+  display: flex;
+  background-color: #243447;
+  border-radius: 8px;
+  padding: 2.5rem;
+  width: 700px;
+}
+
+.text {
+  font-family: var(--font-mono);
+  color: white;
+  width: 650px;
+}
+
+.author {
+  margin-top: 2rem;
+  color: #647c90;
+}
+
+.actionButton {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+
+.actionButton:hover {
+  border: 1px solid white;
+}
+
+.actions {
+  display: flex;
+  width: 100px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 2rem;
+}
