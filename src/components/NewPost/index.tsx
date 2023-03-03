@@ -1,9 +1,5 @@
 import styles from "./NewPost.module.css";
 
-interface NewPostProps {
-  onSubmit: () => void;
-}
-
 export function NewPost({ onSubmit }: any) {
   return (
     <form onSubmit={onSubmit} className={styles.formBox}>
