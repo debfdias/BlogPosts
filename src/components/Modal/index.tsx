@@ -13,7 +13,7 @@ export function DefaultModal({ post, onModalOpen, onSubmit }: ModalProps) {
   const [author, setAuthor] = useState(post.author);
 
   return (
-    <>
+    <div className={styles.modal}>
       <div className={styles.box}>
         <button className={styles.actionButton}>
           <XCircle
@@ -45,6 +45,6 @@ export function DefaultModal({ post, onModalOpen, onSubmit }: ModalProps) {
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
