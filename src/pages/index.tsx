@@ -1,20 +1,11 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { Card } from "@/components/Card";
-import {
-  ADD_LIKE,
-  ADD_POST,
-  DELETE_POST,
-  EDIT_POST,
-  GET_POSTS,
-} from "../graphql/queries";
+import { ADD_LIKE, ADD_POST, DELETE_POST, GET_POSTS } from "../graphql/queries";
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
 import { NewPost } from "@/components/NewPost";
 
 export default function Home() {
-  const [editModalOpen, setEditModalOpen] = useState(false);
-
   const { loading, data } = useQuery(GET_POSTS);
 
   const [addBlogPost] = useMutation(ADD_POST, {
@@ -48,7 +39,6 @@ export default function Home() {
   function onAddLike(id: string) {
     addLikePost({ variables: { id } });
   }
-
   return (
     <>
       <Head>
@@ -60,6 +50,7 @@ export default function Home() {
         ) : (
           <>
             <NewPost onSubmit={onSubmit} />
+
             {data?.posts.map((post: any) => (
               <div key={post.id}>
                 <Card

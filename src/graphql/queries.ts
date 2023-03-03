@@ -35,7 +35,7 @@ export const DELETE_POST = gql`
 
 export const EDIT_POST = gql`
   mutation EditPost($id: String, $content: String, $author: String) {
-    editBlogPost(id: $id, content: $content, author: $author) {
+    editPost(id: $id, content: $content, author: $author) {
       id
       content
       author
