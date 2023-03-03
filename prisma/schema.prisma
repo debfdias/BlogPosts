@@ -14,4 +14,5 @@ model Post {
   id      String @id @default(uuid())
   content String
   author  String
+  likes   Int    @default(0)
 }

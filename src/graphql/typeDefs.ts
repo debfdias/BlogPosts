@@ -5,6 +5,7 @@ export const typeDefs = gql`
     id: String
     content: String
     author: String
+    likes: Int
   }
 
   type Query {
@@ -12,8 +13,9 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addPost(content: String, author: String): Post
+    addPost(content: String, author: String, likes: Int): Post
     editPost(id: String, content: String, author: String): Post
     deletePost(id: String): Post
+    addLike(id: String): Post
   }
 `;

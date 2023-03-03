@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { Card } from "@/components/Card";
 import {
+  ADD_LIKE,
   ADD_POST,
   DELETE_POST,
   EDIT_POST,
@@ -17,15 +18,15 @@ export default function Home() {
   const { loading, data } = useQuery(GET_POSTS);
 
   const [addBlogPost] = useMutation(ADD_POST, {
-    onCompleted: (data) => {
-      window.location.reload();
-    },
+    refetchQueries: [{ query: GET_POSTS }],
   });
 
   const [deleteBlogPost] = useMutation(DELETE_POST, {
-    onCompleted: (data) => {
-      window.location.reload();
-    },
+    refetchQueries: [{ query: GET_POSTS }],
+  });
+
+  const [addLikePost] = useMutation(ADD_LIKE, {
+    refetchQueries: [{ query: GET_POSTS }],
   });
 
   function onDelete(id: string) {
@@ -40,6 +41,12 @@ export default function Home() {
         author: event.target.author.value,
       },
     });
+    event.target.content.value = "";
+    event.target.author.value = "";
+  }
+
+  function onAddLike(id: string) {
+    addLikePost({ variables: { id } });
   }
 
   return (
@@ -53,13 +60,15 @@ export default function Home() {
         ) : (
           <>
             <NewPost onSubmit={onSubmit} />
-            {data.posts.map((post: any) => (
+            {data?.posts.map((post: any) => (
               <div key={post.id}>
                 <Card
                   id={post.id}
                   content={post.content}
                   author={post.author}
                   onDelete={onDelete}
+                  likes={post.likes}
+                  onAddLike={onAddLike}
                 />
               </div>
             ))}

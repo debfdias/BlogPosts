@@ -13,7 +13,6 @@
 }
 
 .author {
-  margin-top: 2rem;
   color: #647c90;
 }
 
@@ -23,14 +22,18 @@
   border: 0;
 }
 
-.actionButton:hover {
-  border: 1px solid white;
-}
-
 .actions {
   display: flex;
   width: 100px;
   align-items: flex-start;
   justify-content: space-between;
   margin-left: 2rem;
+  gap: 0.5rem;
+}
+
+.row {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
