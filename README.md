@@ -47,6 +47,13 @@ $ DATABASE_URL="file:./dev.db"
 
 ```
 
+## :framed_picture: Screenshots
+
+<h1 align="center">
+    <img alt = "Screen1" src = "../.github/img1.png" width = "500px" />
+    <img alt = "Screen2" src = "../.github/img2.png" width = "500px" />
+</h1>
+
 ## :page_facing_up: License
 
 This project is licensed under the [MIT license](./LICENSE).
