@@ -9,11 +9,18 @@ import {
 } from "../graphql/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
+import { NewPost } from "@/components/NewPost";
 
 export default function Home() {
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const { loading, error, data } = useQuery(GET_POSTS);
+  const { loading, data } = useQuery(GET_POSTS);
+
+  const [addBlogPost] = useMutation(ADD_POST, {
+    onCompleted: (data) => {
+      window.location.reload();
+    },
+  });
 
   const [deleteBlogPost] = useMutation(DELETE_POST, {
     onCompleted: (data) => {
@@ -22,8 +29,17 @@ export default function Home() {
   });
 
   function onDelete(id: string) {
-    console.log("got here " + id);
     deleteBlogPost({ variables: { id } });
+  }
+
+  function onSubmit(event: any) {
+    event.preventDefault();
+    addBlogPost({
+      variables: {
+        content: event.target.content.value,
+        author: event.target.author.value,
+      },
+    });
   }
 
   return (
@@ -36,6 +52,7 @@ export default function Home() {
           <>Loading...</>
         ) : (
           <>
+            <NewPost onSubmit={onSubmit} />
             {data.posts.map((post: any) => (
               <div key={post.id}>
                 <Card
