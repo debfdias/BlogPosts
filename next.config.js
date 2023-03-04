@@ -8,7 +8,7 @@ module.exports = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://blog-posts-sigma.vercel.app/",
+            value: "https://blog-posts-hwh8.vercel.app/",
           },
           {
             key: "Access-Control-Allow-Methods",
