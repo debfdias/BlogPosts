@@ -5,6 +5,7 @@ export const resolvers = {
     posts: (_parent: any, _args: any, _context: any) => {
       return prisma.post.findMany();
     },
+    helloGraphQL: () => "GraphQL is running! 🚀",
   },
 
   Mutation: {

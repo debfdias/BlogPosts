@@ -12,6 +12,10 @@ export const typeDefs = gql`
     posts: [Post]
   }
 
+  type Query {
+    helloGraphQL: String
+  }
+
   type Mutation {
     addPost(content: String, author: String, likes: Int): Post
     editPost(id: String, content: String, author: String): Post
